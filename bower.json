@@ -1,0 +1,16 @@
+{
+  "name": "nodeIm",
+  "version": "1.0.0",
+  "homepage": "https://github.com/josemedina760/NodeIM",
+  "authors": [
+    "josemedina760 <josemedina760@gmail.com>"
+  ],
+  "description": "node messaging",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.7",
+    "bootstrap": "~3.3.5",
+    "angular-route": "~1.4.7",
+    "angular-ui-router": "~0.2.15"
+  }
+}
