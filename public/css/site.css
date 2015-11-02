@@ -1,20 +1,54 @@
+@import url(https://fonts.googleapis.com/css?family=Exo+2:100italic,100);
 html {
     height: 100%;
 }
 
 body {
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 59, 76, 1) 0%, rgba(0, 50, 62, 1) 31%, rgba(0, 34, 40, 1) 69%, rgba(0, 27, 31, 1) 100%);
 }
 
 nav {
     position: relative;
     height: 60px;
-    background-color: #333333;
+    background-color: #279CEB;
+}
+
+.button {
+    text-align: center;
+    position: relative;
+    background-color: #FFA22E;
+    color: white;
+    border: none;
+    font-size: 28px;
+    font-family: monospace;
+    padding: 0 80px;
+    border-radius: 40px;
+    margin-top: 25px;
+}
+
+#hometxt {
+    text-align: center;
+    position: relative;
+    color: #fff;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 120px;
+}
+
+#subtxt {
+    color: #fff;
+    font-size: 18px;
+    font-family: monospace;
 }
 
 #messageBox {
     height: 60vh;
+    border-bottom: solid black 1px;
+}
+
+#userBox {
+    height: 60vh;
+    border-left: solid black 1px;
+    border-bottom: solid black 1px;
 }
 
 .nopadding {

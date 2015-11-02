@@ -5,5 +5,6 @@
 
 	function NavController(){
 		var vm = this;
+		vm.particle = true;
 	};
 })();
