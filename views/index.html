@@ -9,19 +9,13 @@
     <title></title>
 </head>
 
-<body>
-    <div ng-controller='NavController as vm'>
-        <div ng-show='vm.particle' id="particles-js">
-            <div class="col-md-6 col-md-offset-3" style="text-align:center;position:absolute;margin-top:11%">
-                <h1 id="hometxt"><span style='color:#FFA22E'>TEK</span> KLUB</h1>
-                <p id="subtxt">Chat About The Lastest Tech <span style='color:#FFA22E;'><b> +</b> </span> Meet Interesting People</p>
-                <button ng-click='vm.particle = false' class="button">Join Chat!</button>
-            </div>
-        </div>
-        <div ng-show='!vm.particle'>
-            <ui-view></ui-view>
-        </div>
+<body style="background-color:#0da0cb">
+    <div ng-controller='NavController as nav'>
+        <ui-view></ui-view>
     </div>
+    <!-- Jquery -->
+    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <!-- particle and socket -->
     <script src="particles.js/particles.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
     <!-- Angular files -->
@@ -29,6 +23,9 @@
     <script src="angular/angular.js"></script>
     <script src="angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/javascript/directives/socketio.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bootbox.js/bootbox.js"></script>
     <!-- Javascript module app -->
     <script src="/javascript/app.js"></script>
     <script src="/javascript/particles/particle.js"></script>

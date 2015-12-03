@@ -10,8 +10,7 @@
 			url: '/chat',
 			templateUrl: 'views/chat.html',
 			controller: 'ChatController',
-			controllerAs: 'vm'
-		})
+		});
 		$urlRouterProvider.otherwise('/');
 	};
 })();

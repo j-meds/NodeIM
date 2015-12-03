@@ -27,10 +27,37 @@ app.get('/', function(req, res){
 	res.render('index');
 });
 
+var users = [];
 io.on('connection', function(socket){
+	var username = '';
 	console.log('A user is connected');
+
+	socket.on('request-user', function(){
+		socket.emit('users', {users: users});
+	});
+	socket.on('message', function(data){
+		io.emit('message', {username: username, message: data.message})
+	});
+
+	socket.on('add-user', function(data){
+		if(users.indexOf(data.username) == -1){
+			io.emit('add-users', {
+				username: data.username
+			});
+			username = data.username;
+			users.push(data.username);
+		}
+		else{
+			socket.emit('prompt-username', {
+				massage: 'user already Exist'
+			});
+		}
+	});
+
 	socket.on('disconnect', function(){
-    console.log('user disconnected');
+    console.log(username + 'user disconnected');
+    users.splice(users.indexOf(username), 1);
+    io.emit('remove-user', {username: username});
   });
 });
 

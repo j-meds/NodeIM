@@ -10,8 +10,8 @@
   "dependencies": {
     "angular": "~1.4.7",
     "bootstrap": "~3.3.5",
-    "angular-route": "~1.4.7",
     "angular-ui-router": "~0.2.15",
-    "particles.js": "~2.0.0"
+    "particles.js": "~2.0.0",
+    "bootbox.js": "bootbox#~4.4.0"
   }
 }

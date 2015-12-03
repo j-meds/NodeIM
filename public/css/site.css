@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Exo+2:100italic,100);
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
 html {
     height: 100%;
 }
@@ -13,17 +14,36 @@ nav {
     background-color: #279CEB;
 }
 
+#chatbtn {
+    background-color: #286090;
+    border: none;
+    transition: background-color 1s;
+    color: #fff;
+    border-radius: 0;
+    font-size: 25px;
+}
+
+#chatbtn:hover {
+    background-color: #1b4363 !important;
+    border: none;
+}
+
 .button {
     text-align: center;
     position: relative;
     background-color: #FFA22E;
+    border: solid #FFA22E;
     color: white;
-    border: none;
     font-size: 28px;
     font-family: monospace;
     padding: 0 80px;
     border-radius: 40px;
     margin-top: 25px;
+    transition: background-color 1.2s;
+}
+
+.button:hover {
+    background-color: rgba(255, 162, 46, .2);
 }
 
 #hometxt {
@@ -42,17 +62,143 @@ nav {
 
 #messageBox {
     height: 60vh;
-    border-bottom: solid black 1px;
+    border-bottom: 1px solid #DDD;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #FFF;
 }
 
 #userBox {
     height: 60vh;
-    border-left: solid black 1px;
-    border-bottom: solid black 1px;
+    border-left: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    overflow: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 1px 4px 2px 2px;
 }
 
 .nopadding {
     padding: 0;
+}
+
+
+/*Scrollbar settings*/
+
+body::-webkit-scrollbar {
+    width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #279CEB;
+    border-radius: 40px;
+}
+
+
+/*Modal settings*/
+
+.close {
+    color: #fff;
+    font-size: 2em;
+    opacity: 1;
+}
+
+.modal-title {
+    margin: 0;
+    line-height: 1.42857143;
+    font-family: fantasy;
+    letter-spacing: 5px;
+    font-size: 24px;
+}
+
+.modal-header {
+    min-height: 16.42857143px;
+    padding: 15px;
+    background-color: #FFA22E;
+    color: #fff;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: center;
+    border: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #FFA22E;
+    border-color: #db8c2b;
+    border-radius: 0;
+    transition: background-color 1s;
+}
+
+.btn-primary:hover {
+    background-color: #d38628 !important;
+    border: none;
+}
+
+
+/*Load animation*/
+
+@keyframes loading {
+    0% {
+        transform-origin: 100% 100%;
+        transform: rotate(0deg);
+    }
+    100% {
+        transform-origin: 100% 100%;
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    position: relative;
+    display: block;
+    z-index: 13;
+    margin: 15px auto;
+    width: 100px;
+    height: 100px;
+    border: 5px solid transparent;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.loading:before {
+    position: absolute;
+    display: block;
+    content: '';
+    z-index: 12;
+    top: 4px;
+    left: 4px;
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background-color: #333;
+}
+
+.loading:after {
+    position: absolute;
+    display: block;
+    top: 0;
+    content: '';
+    z-index: 11;
+    top: 0px;
+    left: 0px;
+    width: 45px;
+    height: 45px;
+    border-radius: 200px 0 0 0;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, #459ad7 50%, #459ad7 100%);
+    animation: loading .9s linear infinite;
+}
+
+#loadtxt {
+    color: #3AB0FF;
+    font-family: 'Poiret One', cursive;
+    text-align: center;
 }
 
 
