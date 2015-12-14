@@ -32,20 +32,19 @@ io.on('connection', function(socket){
 	var username = '';
 	console.log('A user is connected');
 
-	socket.on('request-user', function(){
+	socket.on('request-users', function(){
 		socket.emit('users', {users: users});
 	});
 	socket.on('message', function(data){
-		io.emit('message', {username: username, message: data.message})
+		io.emit('message', {username: username, message: data.message, date: data.date});
 	});
 
 	socket.on('add-user', function(data){
 		if(users.indexOf(data.username) == -1){
-			io.emit('add-users', {
-				username: data.username
-			});
+			io.emit('add-users', data.username);
 			username = data.username;
-			users.push(data.username);
+			users.push(data);
+			console.log(users);
 		}
 		else{
 			socket.emit('prompt-username', {
@@ -55,9 +54,10 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('disconnect', function(){
-    console.log(username + 'user disconnected');
+    console.log(username + ' user disconnected');
     users.splice(users.indexOf(username), 1);
-    io.emit('remove-user', {username: username});
+    console.log(users);
+    io.emit('remove-user', username);
   });
 });
 

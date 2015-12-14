@@ -2,11 +2,17 @@
 	'use strict';
 	angular.module('app')
 	.controller('ChatController', ChatController);
-	ChatController.$inject = ['Socket','$scope', '$location', '$interval', '$rootScope'];
+	ChatController.$inject = ['Socket','$scope', '$location', '$interval', '$rootScope', '$timeout', '$state'];
 
-	function ChatController(Socket, $scope, $location, $interval, $rootScope){
-		var vm = this;
-		$rootScope.particle = false;
+	function ChatController(Socket, $scope, $location, $interval, $rootScope, $timeout, $state){
+		
+		if($rootScope.user.name){
+		Socket.emit('add-user' , {username: $rootScope.user.name});
+		$scope.user = $rootScope.user.name;
+		}else{
+			$state.go('Home');
+		}
+
 		$scope.period = "";
 		$scope.load = true;
 
@@ -15,28 +21,36 @@
 
 		Socket.connect();
 		
-		var load = 0;
+		// var load = 0;
 
-		var runf = $interval(function(){
-			$scope.period += '.'
-			load++; 
-			if($scope.period.length > 3){
-				$scope.period = "";
-			};
-			if(load === 10){
-				$interval.cancel(runf);
-			}
-			console.log(load);
-		}, 500);
+		// var runf = $interval(function(){
+		// 	$scope.period += '.'
+		// 	load++; 
+		// 	if($scope.period.length > 3){
+		// 		$scope.period = "";
+		// 	};
+		// 	if(load === 10){
+		// 		$interval.cancel(runf);
+		// 	}
+		// 	console.log(load);
+		// }, 500);
 
-		Socket.emit('add-user' , {username: $rootScope.user.name});
 
 		$scope.sendMessage = function(msg){
-			Socket.emit('message', {message: msg});
+			Socket.emit('message', {message: msg, date: new Date()});
 			$scope.msg = '';
-		};
+		}
+		$scope.showUsers = function(){
+			console.log('users: ', $scope.users);
+		}
+		$scope.showMessages = function(){
+			console.log('messages: ', $scope.messages);
+		}
 
-		Socket.emit('request-users', {});
+		Socket.emit('request-users', function(data) {
+			console.log(data);
+			$scope.users.push(data);
+		});
 
 		Socket.on('users', function(data){
 			$scope.users = data.users;
@@ -46,23 +60,18 @@
 			$scope.messages.push(data);
 		});
 
-		Socket.on('add-user', function(data){
-			$scope.users.push(data.username);
-			$scope.messages.push({username: data.username, message: 'Has entered the channel'});
+		Socket.on('add-users', function(data){
+			$scope.users.push({username:data});
+			$scope.messages.push({username: data, message: 'Has entered the channel'});
 		});
-
 		Socket.on('remove-user', function(data){
 			$scope.users.splice($scope.users.indexOf(data.username), 1);
 			$scope.messages.push({username: data, message: 'has left the channel'});
 		});
 
-		Socket.on('prompt-username', function(data){
-
-		});
 
 
-
-		$scope.$on('$locationChangeStart', function(event){
+		$scope.$on('$destroy', function(event){
 			Socket.disconnect(true);
 		});
 

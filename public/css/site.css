@@ -69,6 +69,7 @@ nav {
 }
 
 #userBox {
+    color: #fff;
     height: 60vh;
     border-left: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
@@ -199,6 +200,14 @@ body::-webkit-scrollbar-thumb {
     color: #3AB0FF;
     font-family: 'Poiret One', cursive;
     text-align: center;
+}
+
+.username {
+    color: red;
+}
+
+.userList {
+    color: white;
 }
 
 
