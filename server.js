@@ -41,7 +41,7 @@ io.on('connection', function(socket){
 
 	socket.on('add-user', function(data){
 		if(users.indexOf(data.username) == -1){
-			io.emit('add-users', data.username);
+			io.emit('add-user', data.username);
 			username = data.username;
 			users.push(data);
 			console.log(users);

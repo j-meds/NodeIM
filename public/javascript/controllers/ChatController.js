@@ -59,7 +59,7 @@
 			$scope.messages.push(data);
 		});
 
-		Socket.on('add-users', function(data){
+		Socket.on('add-user', function(data){
 			console.log(data);
 			$scope.users.push({username:data});
 			$scope.messages.push({username: data, message: 'Has entered the channel'});
