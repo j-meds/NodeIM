@@ -48,7 +48,6 @@
 		}
 
 		Socket.emit('request-users', function(data) {
-			console.log(data);
 			$scope.users.push(data);
 		});
 
@@ -61,6 +60,7 @@
 		});
 
 		Socket.on('add-users', function(data){
+			console.log(data);
 			$scope.users.push({username:data});
 			$scope.messages.push({username: data, message: 'Has entered the channel'});
 		});

@@ -28,23 +28,29 @@
                             <p style="margin:0"><b ng-class='{"username": user === msg.username}'>{{msg.username}}: </b> {{msg.message}}</p>
                         </div>
                     </div>
+                    <div class="col-md-12 nopadding" style="padding: 5px;background-color: rgb(221, 221, 221);">
+                        <form ng-submit='sendMessage(msg)'>
+                            <div class="col-md-10 col-sm-10 nopadding">
+                                <input ng-model='msg' class="form-control msgInput" required>
+                            </div>
+                            <div class="col-md-2 col-sm-2 nopadding">
+                                <button id='chatbtn' class="btn-block msgInput" style="height:60px">
+                                    <i class="fa fa-paper-plane"></i>
+                                    <span>&nbspSEND</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3 nopadding" id='userBox'>
-                    <h1 class="text-center">USERS</h1>
+                    <h1 class="text-center" style="margin-bottom:0;">USERS</h1>
+                    <p class="text-center text-success" style="border-bottom: solid 1px #474747;">online: {{users.length}}</p>
+                    <div id="userList">
+                        <li id="individualUser" ng-repeat='user in users'>
+                            <img width="20" class="img-circle" src="./css/images/personIcon.png">{{user.username}}
+                        </li>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-12 nopadding" style="padding: 5px;background-color: rgb(221, 221, 221);">
-                <form ng-submit='sendMessage(msg)'>
-                    <div class="col-md-10 col-sm-10 nopadding">
-                        <input ng-model='msg' class="form-control" style="height:60px" required>
-                    </div>
-                    <div class="col-md-2 col-sm-2 nopadding">
-                        <button id='chatbtn' class="btn-block" style="height:60px">
-                            <i class="fa fa-paper-plane"></i>
-                            <span>&nbspSEND</span>
-                        </button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
