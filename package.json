@@ -4,7 +4,7 @@
   "description": "None instangt messaging",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,9 @@
     "url": "https://github.com/josemedina760/NodeIM/issues"
   },
   "homepage": "https://github.com/josemedina760/NodeIM#readme",
+  "engines": {
+    "node": "5.1.1"
+  },
   "dependencies": {
     "ejs": "^2.3.4",
     "express": "^4.13.3",
