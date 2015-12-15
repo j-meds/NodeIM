@@ -62,11 +62,11 @@
 		Socket.on('add-user', function(data){
 			console.log(data);
 			$scope.users.push({username:data});
-			$scope.messages.push({username: data, message: 'Has entered the channel'});
+			$scope.messages.push({username: data, message: 'Has entered the channel', type: 'join'});
 		});
 		Socket.on('remove-user', function(data){
 			$scope.users.splice($scope.users.indexOf(data.username), 1);
-			$scope.messages.push({username: data, message: 'has left the channel'});
+			$scope.messages.push({username: data, message: 'has left the channel', type: 'left'});
 		});
 
 

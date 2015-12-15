@@ -62,6 +62,7 @@ nav {
 
 #messageBox {
     height: 410px;
+    width: 100%;
     border-bottom: 1px solid #DDD;
     overflow: auto;
     background-color: #FFF;

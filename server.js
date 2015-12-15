@@ -56,7 +56,6 @@ io.on('connection', function(socket){
 	socket.on('disconnect', function(){
     console.log(username + ' user disconnected');
     users.splice(users.indexOf(username), 1);
-    console.log(users);
     io.emit('remove-user', username);
   });
 });

@@ -13,9 +13,10 @@
             <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
                 <div class="col-md-9 col-sm-9 col-xs-9 nopadding">
                     <div id='messageBox'>
-                        <p>{{$rootScope.user}}</p>
                         <div ng-repeat='msg in messages'>
-                            <p style="margin:0"><b ng-class='{"username": user === msg.username}'>{{msg.username}}: </b> {{msg.message}}</p>
+                            <p ng-class='{"text-success": msg.type === "join", "text-danger": msg.type === "left"}' style="margin:0">
+                                <b ng-class='{"username": (user === msg.username && msg.type !== "join")}'>{{msg.username}}: </b> {{msg.message}}
+                            </p>
                         </div>
                     </div>
                     <div class="col-md-12 nopadding" style="padding: 5px;background-color: rgb(221, 221, 221);">
@@ -44,8 +45,4 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <button class="btn btn-block" ng-click='showUsers();'>Check users</button>
-    <button class="btn btn-block" ng-click='showMessages();'>Check messages</button>
 </div>
