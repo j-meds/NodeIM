@@ -4,7 +4,7 @@ var path = require('path');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 //port 3000 or port given.
-var port = 3000 || process.env.port;
+var port = process.env.port || 3000;
 
 
 //sets the html path, go into current __directory/public/views
